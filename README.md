@@ -18,33 +18,35 @@
 The goal of this project was to implement an image loader onto an FPGA with VHDL. This would consist of converting an image into binary data, then reading it into the memory and showing the output via VGA connection to a monitor. We also aimed to create functions to modify the image using transformations such as brightness, thresholding, and more. The modifications would happen once a button is pressed or when using an external controller.
 
 The objectives of this are the following:
-- Implement an image reading function
-- Convert image data to video output
-- Implement color image VGA support
-- Implement image processing functions
-- Create working demos
-- Future Directions/ Conclusion
+[] Implement an image reading function
+[] Convert image data to video output
+[] Implement color image VGA support
+[] Implement image processing functions
+[] Create working demos
+[] Future Directions/ Conclusion
 
 ## Constraints/ Challenges
-- Image Reading: Although VHDL cannot read image files directly, we can convert images into binary using MatLab. From here, we can load the binary information into VHDL. We may also need a text reader library.
-- Loading a file into VHDL also requires exclusively binary data. We will need to do more research to learn this.
-- Memory Size: Some challenges we may face may be related to memory size, as we would need to use a smaller image. As color photos may include significantly more information than black and white, it may be best to focus on black and white for this project.
+- **Image Reading:** Although VHDL cannot read image files directly, we can convert images into binary using MatLab. From here, we can load the binary information into VHDL. We may also need a text reader library.
+  - Loading a file into VHDL also requires exclusively binary data. We will need to do more research to learn this.
+- **Memory Size:** Some challenges we may face may be related to memory size, as we would need to use a smaller image. As color photos may include significantly more information than black and white, it may be best to focus on black and white for this project.
 
 ## Adjusted Goal/ Objectives
 With the current constraints in mind, we decided to modify our goals to match our timeframe:
-- Read "simulated" binary image
-- Implement 8-bit colors
-- Implement 8x8 resolution image
-- Implement image processing functions
+[] Read "simulated" binary image
+[] Implement 8-bit colors
+[] Implement 8x8 resolution image
+[] Implement image processing functions
 
 ## Important Concepts
+
 ### 3-bit vs 8-bit color
 - In Lab 3, we used 3-bit color to output a bouncing ball. This means that each pixel is respresented by 3-bits and red, green, and blue are represented by 1-bit '0' or '1' (eg. red "100", green "010", blue "001").
 - However, this gives limited usage of colors, as there are only 8 possible color combinations. Because of this, we decided to use 8-bit color, which gives us 2<sup>8</sup>, which is 256 different color combinations.
 - With 8-bit color, we have 8-bits per pixel. Red is represented by the first 3-bits, Green is the next 3-bits, and Blue is the last 2-bits.
+
 ### Pixel mapping
 - For this project, the images are converted to binary data, with each line respresenting a row of pixels. Since we are using 8-bits, this means that a row of *n* pixels will be represented by 'n pixels * 8 bits'.
-- For example: If we wanted a row of 3 red, blue, green pixels. Red would be "1110000", Green "00011100", and Blue "00000011". This would give us the stream "11100000001110000000011" for this (3 pixels * 8 bits) 24-bit line.
+- For example: If we wanted a row of 3 red, blue, green pixels, respectively. Red would be "1110000", Green "00011100", and Blue "00000011". This would give us the stream "11100000001110000000011" for this (3 pixels * 8 bits) 24-bit line.
 
 ### Image transformations
 - For this project, we focused on two types of transformations:
@@ -56,7 +58,7 @@ With the current constraints in mind, we decided to modify our goals to match ou
   - The Digilent Nexys A7-100T board has a female VGA connector that can be connected to a VGA monitor via a VGA cable
   - 2019-11-15 pull request by Peter Ho with the 800x600@60Hz support for 100MHz clock
 - **Controller:** 5kΩ potentiometer with a 12-bit analog-to-digital converter (ADC) called Pmod AD1
-  - connected to the top pins of the Pmod port JA (See Section 10 of the Reference Manual)
+  - connected to the top pins of the Pmod port JA (See Section 10 of the Reference Manual(INSERTLINKS))*********
 
 ## Foundation
 - **Lab 3**
@@ -104,7 +106,25 @@ With the current constraints in mind, we decided to modify our goals to match ou
 ## Implementation/ Modifications
 ### 3-bit -> 8-bit colors
 - For this project, in order to change our values from 3-bit color to 8-bit, we needed to modify the values of signals.
-- Ex. respectively.
+- In the constraint file, the VGA connection was registered:
+```
+set_property -dict { PACKAGE_PIN A3    IOSTANDARD LVCMOS33 } [get_ports { vga_red[0] }]; #IO_L8N_T1_AD14N_35 Sch=vga_r[0]
+set_property -dict { PACKAGE_PIN B4    IOSTANDARD LVCMOS33 } [get_ports { vga_red[1] }]; #IO_L7N_T1_AD6N_35 Sch=vga_r[1]
+set_property -dict { PACKAGE_PIN C5    IOSTANDARD LVCMOS33 } [get_ports { vga_red[2] }]; #IO_L1N_T0_AD4N_35 Sch=vga_r[2]
+
+set_property -dict { PACKAGE_PIN C6    IOSTANDARD LVCMOS33 } [get_ports { vga_green[0] }]; #IO_L1P_T0_AD4P_35 Sch=vga_g[0]
+set_property -dict { PACKAGE_PIN A5    IOSTANDARD LVCMOS33 } [get_ports { vga_green[1] }]; #IO_L3N_T0_DQS_AD5N_35 Sch=vga_g[1]
+set_property -dict { PACKAGE_PIN B6    IOSTANDARD LVCMOS33 } [get_ports { vga_green[2] }]; #IO_L2N_T0_AD12N_35 Sch=vga_g[2]
+
+set_property -dict { PACKAGE_PIN B7    IOSTANDARD LVCMOS33 } [get_ports { vga_blue[0] }]; #IO_L2P_T0_AD12P_35 Sch=vga_b[0]
+set_property -dict { PACKAGE_PIN C7    IOSTANDARD LVCMOS33 } [get_ports { vga_blue[1] }]; #IO_L4N_T0_35 Sch=vga_b[1]
+
+set_property -dict { PACKAGE_PIN B11   IOSTANDARD LVCMOS33 } [get_ports { vga_hsync }]; #IO_L4P_T0_15 Sch=vga_hs
+set_property -dict { PACKAGE_PIN B12   IOSTANDARD LVCMOS33 } [get_ports { vga_vsync }]; #IO_L3N_T0_DQS_AD1N_15 Sch=vga_vs
+```
+This initialized the red (3-bit), green (3-bit), and blue (2-bit) values, as well as the horizontal and vertical sync (h_sync and v_sync).
+
+
 ### Pixel mappping from stream of  bits
 ### Buttons for image processing
 ### Controller integration for imag processing
