@@ -1,22 +1,18 @@
 # DSD-487 - Digital System Design Final Project
-# Image Processing in VHDL
-## Michael Banks (12/20/2023)
+## Image Processing in VHDL
+### Michael Banks (12/20/2023)
 
 ## Table of Contents:
-- Project Goal
-- Constraints/ Challenges
-- Adjusted Goal/ Objectives
-- Important Concepts
-- Equipment
-- Foundation
-- Source Files
-- Instructions
-- Fix (move lower?)
-- Implementation/ Modifications
-
-
-
-
+- [Project Goal](#Project Goal)
+- [Constraints/ Challenges](#Constraints/ Challenges)
+- [Adjusted Goal/ Objectives](#Adjusted Goal/ Objectives)
+- [Important Concepts](#Important Concepts)
+- [Equipment](#Equipment)
+- [Foundation](#Foundation)
+- [Source Files](#Source Files)
+- [Instructions](#Instructions)
+- [Fix (move lower?)](#Fix (move lower?))
+- [Implementation/ Modifications](#[Implementation/ Modifications)
 
 ### Project Goal:
 The goal of this project was to implement an image loader on an FPGA with VHDL. This would consist of converting an image into binary data, then reading it into the memory and showing the output via VGA connection to a monitor. We also aimed to create functions to modify the image using transformations such as brightness, thresholding, and more. The modifications would happen once a button is pressed or when using an external controller.
@@ -55,8 +51,13 @@ With the current constraints in mind, we decided to modify our goals to match ou
 - Lab 6 (controller, DAC)
 
 ### Source Files
-- ummm
-- ...
+- (adc_if.vhd)[https://github.com/mbanks01/DSD-image-project/blob/main/adc_if.vhd]
+- (ball.vhd)[https://github.com/mbanks01/DSD-image-project/blob/main/ball.vhd]
+- (clk_wiz_0.vhd)[https://github.com/mbanks01/DSD-image-project/blob/main/clk_wiz_0.vhd]
+- (clk_wiz_0_clk_wiz.vhd)[https://github.com/mbanks01/DSD-image-project/blob/main/clk_wiz_0_clk_wiz.vhd]
+- (vga_sync.vhd)[https://github.com/mbanks01/DSD-image-project/blob/main/vga_sync.vhd]
+- (vga_top.vhd)[https://github.com/mbanks01/DSD-image-project/blob/main/vga_top.vhd]
+- (vga_top.xdc)[https://github.com/mbanks01/DSD-image-project/blob/main/vga_top.xdc]
 
 ### Instructions
 - how to run program
