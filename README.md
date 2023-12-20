@@ -3,16 +3,16 @@
 ### Michael Banks (12/20/2023)
 
 ## Table of Contents:
-- [Project Goal](#Project Goal)
-- [Constraints/ Challenges](#Constraints/ Challenges)
-- [Adjusted Goal/ Objectives](#Adjusted Goal/ Objectives)
-- [Important Concepts](#Important Concepts)
-- [Equipment](#Equipment)
-- [Foundation](#Foundation)
-- [Source Files](#Source Files)
-- [Instructions](#Instructions)
-- [Fix (move lower?)](#Fix (move lower?))
-- [Implementation/ Modifications](#[Implementation/ Modifications)
+- [Project Goal](###Project Goal)
+- [Constraints/ Challenges](###Constraints/ Challenges)
+- [Adjusted Goal/ Objectives](###Adjusted Goal/ Objectives)
+- [Important Concepts](###Important Concepts)
+- [Equipment](###Equipment)
+- [Foundation](###Foundation)
+- [Source Files](###Source Files)
+- [Instructions](###Instructions)
+- [Fix (move lower?)](###Fix (move lower?))
+- [Implementation/ Modifications](###[Implementation/ Modifications)
 
 ### Project Goal:
 The goal of this project was to implement an image loader on an FPGA with VHDL. This would consist of converting an image into binary data, then reading it into the memory and showing the output via VGA connection to a monitor. We also aimed to create functions to modify the image using transformations such as brightness, thresholding, and more. The modifications would happen once a button is pressed or when using an external controller.
