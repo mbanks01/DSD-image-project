@@ -52,12 +52,23 @@ With the current constraints in mind, we decided to modify our goals to match ou
   - 2: Brightness/ color transformations, where the 8-bit color value is modified on input. 
 
 ## Equipment
-- Nexsys A7
-- Potentiometer
+- **Nexys A7-100T FPGA Trainer Board**
+  - The Digilent Nexys A7-100T board has a female VGA connector that can be connected to a VGA monitor via a VGA cable
+  - 2019-11-15 pull request by Peter Ho with the 800x600@60Hz support for 100MHz clock
+- **Controller:** 5kΩ potentiometer with a 12-bit analog-to-digital converter (ADC) called Pmod AD1
+  - connected to the top pins of the Pmod port JA (See Section 10 of the Reference Manual)
 
 ## Foundation
-- Lab 3 (vga, clock, 3-bit colors)
-- Lab 6 (controller, DAC)
+- **Lab 3**
+  - We used files from lab 3 to implement VGA video output, 100MHz clock, and 3-bit colors.
+  - Files used were: *ball.vhd*, *clk_wiz_0.vhd*, *clk_wiz_0_clk_wiz.vhd*, *vga_sync.vhd*, *vga_sync.xdc*, and *vga_top.vhd*.
+    - **ball.vhd:** the base file we used for image loading
+    - **clk_wiz_0.vhd** and **clk_wiz_0_clk_wiz.vhd:** used to implement the 100MHz clock for VGA support.
+    - **vga_sync.vhd:** used to combine 
+    - **vga_top.vhd:** used as the top level file.
+- **Lab 6** (controller, DAC)
+  - We used files for lab 6 to implement controller support for image transformations.
+  - Files used were:*adc_if.vhd*
 
 ## Source Files
 - [adc_if.vhd](https://github.com/mbanks01/DSD-image-project/blob/main/adc_if.vhd)
@@ -93,6 +104,7 @@ With the current constraints in mind, we decided to modify our goals to match ou
 ## Implementation/ Modifications
 ### 3-bit -> 8-bit colors
 - For this project, in order to change our values from 3-bit color to 8-bit, we needed to modify the values of signals.
+- Ex. respectively.
 ### Pixel mappping from stream of  bits
 ### Buttons for image processing
 ### Controller integration for imag processing
