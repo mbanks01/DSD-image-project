@@ -51,13 +51,13 @@ With the current constraints in mind, we decided to modify our goals to match ou
 - Lab 6 (controller, DAC)
 
 ## Source Files
-- (adc_if.vhd)[https://github.com/mbanks01/DSD-image-project/blob/main/adc_if.vhd]
-- (ball.vhd)[https://github.com/mbanks01/DSD-image-project/blob/main/ball.vhd]
-- (clk_wiz_0.vhd)[https://github.com/mbanks01/DSD-image-project/blob/main/clk_wiz_0.vhd]
-- (clk_wiz_0_clk_wiz.vhd)[https://github.com/mbanks01/DSD-image-project/blob/main/clk_wiz_0_clk_wiz.vhd]
-- (vga_sync.vhd)[https://github.com/mbanks01/DSD-image-project/blob/main/vga_sync.vhd]
-- (vga_top.vhd)[https://github.com/mbanks01/DSD-image-project/blob/main/vga_top.vhd]
-- (vga_top.xdc)[https://github.com/mbanks01/DSD-image-project/blob/main/vga_top.xdc]
+- [adc_if.vhd](https://github.com/mbanks01/DSD-image-project/blob/main/adc_if.vhd)
+- [ball.vhd](https://github.com/mbanks01/DSD-image-project/blob/main/ball.vhd)
+- [clk_wiz_0.vhd](https://github.com/mbanks01/DSD-image-project/blob/main/clk_wiz_0.vhd)
+- [clk_wiz_0_clk_wiz.vhd](https://github.com/mbanks01/DSD-image-project/blob/main/clk_wiz_0_clk_wiz.vhd)
+- [vga_sync.vhd](https://github.com/mbanks01/DSD-image-project/blob/main/vga_sync.vhd)
+- [vga_top.vhd](https://github.com/mbanks01/DSD-image-project/blob/main/vga_top.vhd)
+- [vga_top.xdc](https://github.com/mbanks01/DSD-image-project/blob/main/vga_top.xdc)
 
 ## Instructions
 - how to run program
