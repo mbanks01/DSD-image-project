@@ -3,12 +3,12 @@
 ### Michael Banks (12/20/2023)
 
 ## Table of Contents:
-- [Project Goal]()
-- [Constraints/ Challenges]()
-- [Adjusted Goal/ Objectives]()
-- [Important Concepts]()
-- [Equipment]()
-- [Foundation]()
+- [Project Goal](## Project Goal:)
+- [Constraints/ Challenges](## Constraints/ Challenges)
+- [Adjusted Goal/ Objectives](## Adjusted Goal/ Objectives)
+- [Important Concepts](## Important Concepts)
+- [Equipment](## Equipment)
+- [Foundation](## Foundation)
 - [Source Files]()
 - [Instructions]()
 - [Fix (move lower?)]()
@@ -104,7 +104,7 @@ With the current constraints in mind, we decided to modify our goals to match ou
 - why different?
 
 ## Implementation/ Modifications
-### 3-bit -> 8-bit colors
+### A) 3-bit -> 8-bit colors
 - For this project, in order to change our values from 3-bit color to 8-bit, we needed to modify the values of signals.
 - In the constraint file, the VGA connection was registered:
 ```
@@ -125,9 +125,9 @@ set_property -dict { PACKAGE_PIN B12   IOSTANDARD LVCMOS33 } [get_ports { vga_vs
 This initialized the red (3-bit), green (3-bit), and blue (2-bit) values, as well as the horizontal and vertical sync (h_sync and v_sync).
 
 
-### Pixel mappping from stream of  bits
-### Buttons for image processing
-### Controller integration for imag processing
+### B) Pixel mappping from stream of  bits
+### C) Buttons for image processing
+### D) Controller integration for imag processing
 
 ## Demos
 - 1: Gradient, interact with color modifciation
