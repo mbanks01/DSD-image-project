@@ -7,6 +7,7 @@
 - Constraints/ Challenges
 - Adjusted Goal/ Objectives
 - Important Concepts
+- Equipment
 - Foundation
 - Source Files
 - Instructions
@@ -44,6 +45,10 @@ With the current constraints in mind, we decided to modify our goals to match ou
 - 8-bit color, RGB values
 - Pixel mapping
 - Image transformations
+
+### Equipment
+- Nexsys A7
+- Potentiometer
 
 ### Foundation
 - Lab 3 (vga, clock, 3-bit colors)
