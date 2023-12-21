@@ -288,7 +288,7 @@ These buttons determined states that affected with function, or demo would play:
 ```
 
 
-### D) Controller integration for imag processing
+### D) Controller integration for image processing
 Inputs `ADC_SDATA1`, `ADC_SDATA2`, `ADC_SCLK`, and `ADC_CS` were added for potentiometer controller input:
 ```
 set_property -dict { PACKAGE_PIN D18 IOSTANDARD LVCMOS33 } [get_ports { ADC_SDATA1 }]; #IO_L21N_T3_DQS_A18_15 Sch=ja[2]
