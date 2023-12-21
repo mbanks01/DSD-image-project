@@ -21,11 +21,11 @@
 The goal of this project was to implement an image loader onto an FPGA with VHDL. This would consist of converting an image into binary data, then reading it into the memory and showing the output via VGA connection to a monitor. We also aimed to create functions to modify the image using transformations such as brightness, thresholding, and more. The modifications would happen once a button is pressed or when using an external controller.
 
 The objectives of this are the following:
-- [] Implement an image reading function
-- [] Convert image data to video output
-- [] Implement color image VGA support
-- [] Implement image processing functions
-- [] Create working demos
+- [ ] Implement an image reading function
+- [ ] Convert image data to video output
+- [ ] Implement color image VGA support
+- [ ] Implement image processing functions
+- [ ] Create working demos
 
 ## Constraints/ Challenges
 - **Image Reading:** Although VHDL cannot read image files directly, we can convert images into binary using MatLab. From here, we can load the binary information into VHDL. We may also need a text reader library.
