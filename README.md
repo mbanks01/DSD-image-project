@@ -147,12 +147,24 @@ This initialized the red (3-bit), green (3-bit), and blue (2-bit) values, as wel
 - **1: Gradient:**
   - This demo plots the red value against the blue values to create a gradient of all possible color combinations.
   - There are 8 possible color values for red, and 4 possible for blue. This creates an 8x4 pixel gradient which is output to the monitor.
+
+  ![Demo1-img](/images/demo1_rxb-optimized.png)
+
   - **MODIFICATION:** We used the potentiometer to modify the gradient by adding a green value based on the controller input.
+ 
+  ![Demo1-img](/images/demo1_rxbxg-optimized.png)
+  
 - **2: Image:**
   - This demo uses the "simulated" bitstream to load an image onto the monitor.
   - **MODIFICATION:** We used two buttons to modify the input, adding transformations along the X-axis and Y-axis.
-    - When the top button is pressed (pin M18), it triggers flag `st_transform_x`, which sets the transform to add to the 
-    - When the bottom button is pressed (pin P18), it triggers flag `st_transform_y`, which sets the transform to add to the
+    - When the top button is pressed (pin M18), it triggers flag `st_transform_x`, which sets the transform to add to the x-coordinate, offsetting from the origin.
+   
+![demo-2-x-transform](/images/demo2_x_shift.png)
+
+  - When the bottom button is pressed (pin P18), it triggers flag `st_transform_y`, which sets the transform to add to the, offsetting from the origin.
+
+![demo-2-y-transform](/images/demo2_y_shift.png)
+
         ```
         IF (st_transform_x = '1') OR (st_transform_y = '1') THEN
         	transform <= CONV_INTEGER(bat_x) / 80; -- 640 / 80 = 8 sections
