@@ -297,11 +297,16 @@ set_property -dict { PACKAGE_PIN G17 IOSTANDARD LVCMOS33 } [get_ports { ADC_SCLK
 set_property -dict { PACKAGE_PIN C17 IOSTANDARD LVCMOS33 } [get_ports { ADC_CS }]; #IO_L20N_T3_A19_15 Sch=ja[1]
 ```
 Within *ball.vhd*:
-	- Similarly to `pixel_col` and `pixel_row`, the controller input (`bat_x`) was divided to create a 1 to 8 value.
+- Similarly to `pixel_col` and `pixel_row`, the controller input (`bat_x`) was divided to create a 1 to 8 value.
+- 
  	`ball_z_calc <= CONV_INTEGER(bat_x) / 80;          -- 640 / 80 = 8 sections`
-  	- With the first demo (Gradient), the controller was used to determine the value of green on the screen:
+  
+- With the first demo (Gradient), the controller was used to determine the value of green on the screen:
+- 
    	`c_green <= conv_std_logic_vector(ball_z_calc,3);`
-    	- With the second demo (Image), the controller was used to shift the X and Y placement of the image:
+  
+- With the second demo (Image), the controller was used to shift the X and Y placement of the image:
+- 
      	`transform <= CONV_INTEGER(bat_x) / 80; -- 640 / 80 = 8 sections`
 ```
 	IF (st_transform_x = '1') OR (st_transform_y = '1') THEN
