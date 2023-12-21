@@ -45,10 +45,13 @@ With the current constraints in mind, we decided to modify our goals to match ou
 
 ### 3-bit vs 8-bit color
 - In Lab 3, we used 3-bit color to output a bouncing ball. This means that each pixel is respresented by 3-bits and red, green, and blue are represented by 1-bit '0' or '1' (eg. red "100", green "010", blue "001").
+
+  
   ![Sample 3-bit image](/images/RGB_3bits_palette_sample_image.png)
   ![3-bit_palette_color_test_chart](/images/RGB_3bits_palette_color_test_chart.png)
 - However, this gives limited usage of colors, as there are only 8 possible color combinations. Because of this, we decided to use 8-bit color, which gives us 2<sup>8</sup>, which is 256 different color combinations.
-- With 8-bit color, we have 8-bits per pixel. Red is represented by the first 3-bits, Green is the next 3-bits, and Blue is the last 2-bits.
+- With 8-bit color, we have 8-bits per pixel. Red is represented by the first 3-bits, Green is the next 3-bits, and Blue is the last 2-bits
+  
   ![Sample 8-bit image](/images/MSX2_Screen8_palette_sample_image.png)
   ![8-bit_palette_color_test_chart](/images/MSX2_Screen8_palette_color_test_chart.png)
 ### Pixel mapping
