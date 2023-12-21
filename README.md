@@ -31,8 +31,9 @@ The objectives of this are the following:
 - **Image Reading:** Although VHDL cannot read image files directly, we can convert images into binary using MatLab. From here, we can load the binary information into VHDL. We may also need a text reader library.
   - Loading a file into VHDL also requires exclusively binary data. We will need to do more research to learn this.
 - **Memory Size:** Some challenges we may face may be related to memory size, as we would need to use a smaller image. As color photos may include significantly more information than black and white, it may be best to focus on black and white for this project.
+- We would also need to save the file data to the block RAM, however we chose to “simulate” this due to complexity issues.
 
-## Adjusted Goal/ Objectives
+## Specific Objectives
 With the current constraints in mind, we decided to modify our goals to match our timeframe:
 - [ ] Read "simulated" binary image
 - [ ] Implement 8-bit colors
@@ -43,7 +44,6 @@ With the current constraints in mind, we decided to modify our goals to match ou
 
 ### [3-bit vs 8-bit color](https://en.wikipedia.org/wiki/List_of_8-bit_computer_hardware_graphics)
 - In Lab 3, we used 3-bit color to output a bouncing ball. This means that each pixel is respresented by 3-bits and red, green, and blue are represented by 1-bit '0' or '1' (eg. red "100", green "010", blue "001").
-
   
   ![Sample 3-bit image](/images/RGB_3bits_palette_sample_image.png)
   ![3-bit_palette_color_test_chart](/images/RGB_3bits_palette_color_test_chart.png)
@@ -126,6 +126,7 @@ With the current constraints in mind, we decided to modify our goals to match ou
 ### 5. Use controller and buttons
 - Press the center button to open Demo 1 (Gradient display), adjust the controller to modify the color hues.
 - Press the top/bottom buttons to open Demo 2 (image), adjust the controller to transform the image along the x and y axis.
+
 
 ## Implementation/ Modifications
 ### A) 3-bit -> 8-bit colors
