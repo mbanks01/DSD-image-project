@@ -1,6 +1,6 @@
 # DSD-487 - Digital System Design Final Project
 ## Image Processing in VHDL
-### Michael Banks (12/20/2023)
+### Written by Michael Banks (12/16/2023 - 12/20/2023)
 
 ![project-image](/images/project_img1.png)
 
@@ -17,7 +17,6 @@
 - Implementation/ Modifications
 - Timeline
 
-(##Project-Goal:)
 ## Project Goal:
 The goal of this project was to implement an image loader onto an FPGA with VHDL. This would consist of converting an image into binary data, then reading it into the memory and showing the output via VGA connection to a monitor. We also aimed to create functions to modify the image using transformations such as brightness, thresholding, and more. The modifications would happen once a button is pressed or when using an external controller.
 
@@ -27,15 +26,12 @@ The objectives of this are the following:
 - [] Implement color image VGA support
 - [] Implement image processing functions
 - [] Create working demos
-- [] Future Directions/ Conclusion
 
-(##Constraints/Challenges)
 ## Constraints/ Challenges
 - **Image Reading:** Although VHDL cannot read image files directly, we can convert images into binary using MatLab. From here, we can load the binary information into VHDL. We may also need a text reader library.
   - Loading a file into VHDL also requires exclusively binary data. We will need to do more research to learn this.
 - **Memory Size:** Some challenges we may face may be related to memory size, as we would need to use a smaller image. As color photos may include significantly more information than black and white, it may be best to focus on black and white for this project.
 
-(##Adjusted-Goal/Objectives)
 ## Adjusted Goal/ Objectives
 With the current constraints in mind, we decided to modify our goals to match our timeframe:
 - [] Read "simulated" binary image
