@@ -147,10 +147,75 @@ set_property -dict { PACKAGE_PIN C7    IOSTANDARD LVCMOS33 } [get_ports { vga_bl
 set_property -dict { PACKAGE_PIN B11   IOSTANDARD LVCMOS33 } [get_ports { vga_hsync }]; #IO_L4P_T0_15 Sch=vga_hs
 set_property -dict { PACKAGE_PIN B12   IOSTANDARD LVCMOS33 } [get_ports { vga_vsync }]; #IO_L3N_T0_DQS_AD1N_15 Sch=vga_vs
 ```
-This initialized the red (3-bit), green (3-bit), and blue (2-bit) values, as well as the horizontal and vertical sync (h_sync and v_sync).
+This initialized the red (3-bit), green (3-bit), and blue (2-bit) values, as well as the horizontal and vertical sync (`h_sync` and `v_sync`).
 
+Within *vga_top.vhd*:
+  - Architecture:
+    - Signals `S_red` and `S_green` were turned to 3-bit signals
+    - Signal `S_blue` was turned to a 2-bit signal
+  - Component ball:
+    - Signals `red` and `green` -> 3-bit
+    - Signal `blue` -> 2-bit
+  - Component vga_sync
+    - Signal `red_out`, `green_out`, `red_in`, `green_in` -> 3-bit
+    - Signal `blue_out`, `blue_in` -> 2-bit
+  - `red`, `green`, `blue` signals ported to *ball.vhd*
+
+Within *vga_sync*:
+  - Signal `video_on` was turned to 3-bit
+  - Another signal `video_on_blue` was created for 2-bit (blue channel)
+    - `video_on` sets a flag to disable video during blanking and sync periods
+
+Within *ball.vhd*:
+  - `c_red`, `c_green`, and `c_blue` act as temporary values for RGB in a process.
+  - Temporary values are then sent to `red`, `green`, and `blue` and output to the monitor based on `pixel_col` and `pixel_row` positions.
 
 ### B) Pixel mappping from stream of  bits
+Within *ball.vhd*:
+  - The 800x600 screen is divided into 8x8 components:
+```
+	       ball_x_calc <= (CONV_INTEGER(pixel_col) / 100);      -- 800 pixels / 100 = 8 segments
+	       ball_y_calc <= (CONV_INTEGER(pixel_row) / 75);       -- 600 pixels / 75 = 8 segments
+```
+`ball_x_calc` and `ball_y_calc` act as the X and Y position, which will be used to map the color values to pixels.
+
+The image is read as a bit sequence, with 8 signals, acting as "line breaks" for each horizontal pixel layer:
+```
+	rgbimg0 <= "0001101100011011000110110001101100011011000110110001101100011011";
+	rgbimg1 <= "0001101100011011111110111111101111111011111110110001101100011011";
+	rgbimg2 <= "0001101111111011111110111111101111111011111110111111101100011011";
+	rgbimg3 <= "0001101111110010111110110000000011111011000000001111101111110010";
+	rgbimg4 <= "1111001011111011111110110100111111111011010011111111101111110010";
+	rgbimg5 <= "1111001011110010111010101111101111111011111110111110101000011011";
+	rgbimg6 <= "0001101111000101111100101111001011111011111110111100010100011011";
+	rgbimg7 <= "0001101111000101111001011110010100011011110001011110010100011011";
+```
+Each layer is a 64-bit sequence which determines the value of 8 pixels, resulting in an 8x8 image.
+
+```
+if (ball_y_calc >= 0) AND (ball_y_calc < 1) THEN
+	rgbcode <= rgbimg0(inc_val1 DOWNTO inc_val1 - 7);
+	
+	ELSIF (ball_y_calc >= 1) AND (ball_y_calc < 2) THEN
+	rgbcode <= rgbimg1(inc_val1 DOWNTO inc_val1 - 7);
+	ELSIF (ball_y_calc >= 2) AND (ball_y_calc < 3) THEN
+	rgbcode <= rgbimg2(inc_val1 DOWNTO inc_val1 - 7);
+	ELSIF (ball_y_calc >= 3) AND (ball_y_calc < 4) THEN
+	rgbcode <= rgbimg3(inc_val1 DOWNTO inc_val1 - 7);
+	ELSIF (ball_y_calc >= 4) AND (ball_y_calc < 5) THEN
+	rgbcode <= rgbimg4(inc_val1 DOWNTO inc_val1 - 7);
+	ELSIF (ball_y_calc >= 5) AND (ball_y_calc < 6) THEN
+	rgbcode <= rgbimg5(inc_val1 DOWNTO inc_val1 - 7);
+	ELSIF (ball_y_calc >= 6) AND (ball_y_calc < 7) THEN
+	rgbcode <= rgbimg6(inc_val1 DOWNTO inc_val1 - 7);
+	ELSIF (ball_y_calc >= 7) AND (ball_y_calc < 8) THEN
+	rgbcode <= rgbimg7(inc_val1 DOWNTO inc_val1 - 7);
+	ELSE
+	
+	rgbcode <= "11111111";
+	END IF;
+```
+
 ### C) Buttons for image processing
 ### D) Controller integration for imag processing
 
