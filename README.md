@@ -167,6 +167,8 @@ This initialized the red (3-bit), green (3-bit), and blue (2-bit) values, as wel
   - **MODIFICATION:** We used the potentiometer to modify the gradient by adding a green value based on the controller input.
  
   ![Demo1-img](/images/demo1_rxbxg-optimized.png)
+  ![demo-1-gif](/images/demo-1.gif)
+
   
 - **2: Image:**
   - This demo uses the "simulated" bitstream to load an image onto the monitor.
@@ -178,8 +180,6 @@ This initialized the red (3-bit), green (3-bit), and blue (2-bit) values, as wel
 
 ![demo-1-pixel-mapping](/images/rgbcodemapping.png)
 
-![demo-1-gif](/images/demo-1.gif)
-
   - **MODIFICATION:** We used two buttons to modify the input, adding transformations along the X-axis and Y-axis.
     - When the top button is pressed (pin M18), it triggers flag `st_transform_x`, which sets the transform to add to the x-coordinate, offsetting from the origin.
    
@@ -190,7 +190,8 @@ This initialized the red (3-bit), green (3-bit), and blue (2-bit) values, as wel
 
 ![demo-2-y-transform](/images/demo2_y_shift.png)
 ![demo-2-y-gif](/images/demo-2-y.gif)
-        ```
+
+```
         IF (st_transform_x = '1') OR (st_transform_y = '1') THEN
         	transform <= CONV_INTEGER(bat_x) / 80; -- 640 / 80 = 8 sections
         	   IF (st_transform_x = '1') THEN
@@ -201,7 +202,7 @@ This initialized the red (3-bit), green (3-bit), and blue (2-bit) values, as wel
         	       ball_y_calc <= (CONV_INTEGER(pixel_row) / 75) + transform; -- 600 pixels / 75 = divides into 8 parts for blue (X COORD)
         	   END IF;
         	END IF;
-        ```
+```
 
 ## Future Directions/ Conclusion
 Given more time, these are the future directions we would have taken:
