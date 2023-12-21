@@ -2,6 +2,8 @@
 ## Image Processing in VHDL
 ### Michael Banks (12/20/2023)
 
+![project-image](/images/project_img1.png)
+
 ## Table of Contents:
 - Project Goal
 - Constraints/ Challenges
@@ -62,6 +64,8 @@ With the current constraints in mind, we decided to modify our goals to match ou
 - For this project, the images are converted to binary data, with each line respresenting a row of pixels. Since we are using 8-bits, this means that a row of *n* pixels will be represented by 'n pixels * 8 bits'.
 - For example: If we wanted a row of 3 red, blue, green pixels, respectively. Red would be "1110000", Green "00011100", and Blue "00000011". This would give us the stream "11100000001110000000011" for this (3 pixels * 8 bits) 24-bit line.
 
+![pixel-mapping-example](/images/pixel-mapping-ex.png)
+
 ### Image transformations
 - For this project, we focused on two types of transformations:
   - 1: Position transformations, where the image is shifted along the x or y axis.
@@ -71,8 +75,16 @@ With the current constraints in mind, we decided to modify our goals to match ou
 - **Nexys A7-100T FPGA Trainer Board**
   - The Digilent Nexys A7-100T board has a female VGA connector that can be connected to a VGA monitor via a VGA cable
   - 2019-11-15 pull request by Peter Ho with the 800x600@60Hz support for 100MHz clock
+
+![equipment-fpga-layout](/images/fpga_layout-optimized.png)
+
 - **Controller:** 5kΩ potentiometer with a 12-bit analog-to-digital converter (ADC) called Pmod AD1
   - connected to the top pins of the Pmod port JA (See Section 10 of the Reference Manual(INSERTLINKS))*********
+  
+![potentiometer](/images/potentiometer.png)
+
+
+
 
 ## Foundation
 - **Lab 3**
@@ -94,6 +106,8 @@ With the current constraints in mind, we decided to modify our goals to match ou
 - [vga_sync.vhd](https://github.com/mbanks01/DSD-image-project/blob/main/vga_sync.vhd)
 - [vga_top.vhd](https://github.com/mbanks01/DSD-image-project/blob/main/vga_top.vhd)
 - [vga_top.xdc](https://github.com/mbanks01/DSD-image-project/blob/main/vga_top.xdc)
+
+![overall-diagram](/images/overall-diagram.png)
 
 ## Instructions
 ### 1. Create a new RTL project 8bitimage in Vivado Quick Start
@@ -156,6 +170,14 @@ This initialized the red (3-bit), green (3-bit), and blue (2-bit) values, as wel
   
 - **2: Image:**
   - This demo uses the "simulated" bitstream to load an image onto the monitor.
+
+  - In order to convert from the usual 24-bit colors (255,255,255) to 8-bit colors (7,7,3), we had to scale the range down:
+  - This could be done by taking the Red and Green values and multiplying them by 7/255 and rounding to the nearest integer:
+
+![demo-1-rgb-mapping](/images/img_color_vals.png)
+
+![demo-1-pixel-mapping](/images/rgbcodemapping.png)
+
   - **MODIFICATION:** We used two buttons to modify the input, adding transformations along the X-axis and Y-axis.
     - When the top button is pressed (pin M18), it triggers flag `st_transform_x`, which sets the transform to add to the x-coordinate, offsetting from the origin.
    
