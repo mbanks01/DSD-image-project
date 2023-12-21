@@ -219,24 +219,24 @@ Overall, this project used our knowledge of FPGAs and VHDL to implement an image
 
 ## Timeline (12/16/2023 - 12/20/2023)
 (12/16/2023) - Development of RGB compatibility
-![RGB-step-1](/images/prog_1.jpg)
+![RGB-step-1](/images/prog_1.JPG)
 
 (12/16/2023) - Created functionality to display multiple colors at once.
-![RGB-step-2](/images/prog_2.jpg)
-![RGB-step-3](/images/prog_3.jpeg)
+![RGB-step-2](/images/prog_2.JPG)
+![RGB-step-3](/images/prog_3.JPEG)
              - Converted 3-bit RGB to 8-bit RGB
-![RGB-step-4](/images/prog_4.jpeg)
+![RGB-step-4](/images/prog_4.JPEG)
              - Began DEMO 1 (Gradient)
-![RGB-step-5](/images/prog_5.jpeg)
+![RGB-step-5](/images/prog_5.JPEG)
 
 (12/17/2023) 
              - Created pixel mapping function
-![RGB-step-8](/images/prog_8.jpeg)
+![RGB-step-8](/images/prog_8.JPEG)
              - Created controller functionality
-![RGB-step-6](/images/prog_6.jpeg)
+![RGB-step-6](/images/prog_6.JPEG)
              - Finalized demos 1 and 2
-![RGB-step-7](/images/prog_7.jpeg)
-![RGB-step-9](/images/prog_9.jpg)   
+![RGB-step-7](/images/prog_7.JPEG)
+![RGB-step-9](/images/prog_9.JPG)   
 
 (12/18/2023) - Began writing report outline
 
