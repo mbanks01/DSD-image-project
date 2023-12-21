@@ -392,34 +392,17 @@ Overall, this project used our knowledge of FPGAs and VHDL to implement an image
 (12/16/2023) - Created functionality to display multiple colors at once.
 ![RGB-step-2](/images/prog_2.JPG)
 ![RGB-step-3](/images/prog_3.JPEG)
-             - Converted 3-bit RGB to 8-bit RGB
+(12/16/2023) - Converted 3-bit RGB to 8-bit RGB
 ![RGB-step-4](/images/prog_4.JPEG)
-             - Began DEMO 1 (Gradient)
+(12/16/2023) - Began DEMO 1 (Gradient)
 ![RGB-step-5](/images/prog_5.JPEG)
-
-(12/17/2023) 
-             - Created pixel mapping function
+(12/17/2023) - Created pixel mapping function
 ![RGB-step-8](/images/prog_8.JPEG)
-             - Created controller functionality
+(12/17/2023) - Created controller functionality
 ![RGB-step-6](/images/prog_6.JPEG)
-             - Finalized demos 1 and 2
+(12/17/2023) - Finalized demos 1 and 2
 ![RGB-step-7](/images/prog_7.JPEG)
 ![RGB-step-9](/images/prog_9.JPG)   
-
 (12/18/2023) - Began writing report outline
-
 (12/19/2023) - Continued writing report, created visuals/graphics
-
 (12/20/2023) - Finished report
-
-
-A description of the expected behavior of the project, attachments needed (speaker module, VGA connector, etc.), related images/diagrams, etc.
-
-
-
-A summary of the steps to get the project to work in Vivado and on the Nexys board
-Images and/or videos of the project in action interspersed throughout to provide context
-“Modifications”
-
-
-Conclude with a summary of the process itself – who was responsible for what components (preferably also shown by each person contributing to the github repository!), the timeline of work completed, any difficulties encountered and how they were solved, etc.
