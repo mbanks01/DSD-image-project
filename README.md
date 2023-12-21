@@ -1,6 +1,6 @@
 # DSD-487 - Digital System Design Final Project
 ## Image Processing in VHDL
-### Written by Michael Banks (12/16/2023 - 12/20/2023)
+### Michael Banks, Elliot Braverman, Jaren Runaas (12/16/2023 - 12/20/2023)
 [Presentation link](https://docs.google.com/presentation/d/1OSbASa3Qv2N50k17Ph_3it8hPO9rOFFxLh-Y4oScfYI/edit?usp=sharing)
 
 ![project-image](/images/project_img1.png)
@@ -418,7 +418,10 @@ Overall, this project used our knowledge of FPGAs and VHDL to implement an image
 
 ## Contributions
 - Michael Banks:
-	- Project code
- 	- Project report
-  	- Project graphics, video, pictures
-  	- Project powerpoint
+	- Code
+ 	- Report
+  	- Graphics, video, pictures, powerpoint
+- Elliot Braverman:
+	- Presented project, demo
+- Jared Runaas:
+	- Presented project, demo
