@@ -194,10 +194,10 @@ Each layer is a 64-bit sequence which determines the value of 8 pixels, resultin
 
 We also take the desired 8-bit segment from the 64-bit sequence, which is found by using:
 	`inc_val1 <= (ball_x_calc+1)*8 - 1;`
-This takes the X-coordinate (1 to 8) and multiplies it by 8 to get the desired code. 
-	- For example: if we wanted the 1st code, it would result in (1*8-1 = 7), which gives us (7 DOWNTO 0).
- 	- If we want the second code, it gives us (15 DOWNTO 8), third is (23 DOWNTO 16), and so on.
-  	- This was done so that if we wanted to add more pixels (64x64), we wouldn't need to change this part of the code, as it is adaptable.
+This takes the X-coordinate (1 to 8) and multiplies it by 8 to get the desired code.
+- For example: if we wanted the 1st code, it would result in (1*8-1 = 7), which gives us (7 DOWNTO 0).
+- If we want the second code, it gives us (15 DOWNTO 8), third is (23 DOWNTO 16), and so on.
+- This was done so that if we wanted to add more pixels (64x64), we wouldn't need to change this part of the code, as it is adaptable.
 ```
 if (ball_y_calc >= 0) AND (ball_y_calc < 1) THEN
 	rgbcode <= rgbimg0(inc_val1 DOWNTO inc_val1 - 7);
