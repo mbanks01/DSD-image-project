@@ -34,10 +34,10 @@ The objectives of this are the following:
 
 ## Adjusted Goal/ Objectives
 With the current constraints in mind, we decided to modify our goals to match our timeframe:
-- [] Read "simulated" binary image
-- [] Implement 8-bit colors
-- [] Implement 8x8 resolution image
-- [] Implement image processing functions
+- [ ] Read "simulated" binary image
+- [ ] Implement 8-bit colors
+- [ ] Implement 8x8 resolution image
+- [ ] Implement image processing functions
 
 ## Important Concepts
 
