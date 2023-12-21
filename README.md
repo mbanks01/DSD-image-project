@@ -5,17 +5,17 @@
 ![project-image](/images/project_img1.png)
 
 ## Table of Contents:
-- Project Goal
-- Constraints/ Challenges
-- Adjusted Goal/ Objectives
-- Important Concepts
-- Equipment
-- Foundation
-- Source Files
-- Instructions
-- Fix (move lower?)
-- Implementation/ Modifications
-- Timeline
+- ### Project Goal
+- ### Constraints/ Challenges
+- ### Adjusted Goal/ Objectives
+- ### Important Concepts
+- ### Equipment
+- ### Foundation
+- ### Source Files
+- ### Instructions
+- ### Implementation/ Modifications
+- ### Conclusion
+- ### Timeline
 
 ## Project Goal:
 The goal of this project was to implement an image loader onto an FPGA with VHDL. This would consist of converting an image into binary data, then reading it into the memory and showing the output via VGA connection to a monitor. We also aimed to create functions to modify the image using transformations such as brightness, thresholding, and more. The modifications would happen once a button is pressed or when using an external controller.
@@ -41,7 +41,7 @@ With the current constraints in mind, we decided to modify our goals to match ou
 
 ## Important Concepts
 
-### 3-bit vs 8-bit color
+### [3-bit vs 8-bit color](https://en.wikipedia.org/wiki/List_of_8-bit_computer_hardware_graphics)
 - In Lab 3, we used 3-bit color to output a bouncing ball. This means that each pixel is respresented by 3-bits and red, green, and blue are represented by 1-bit '0' or '1' (eg. red "100", green "010", blue "001").
 
   
@@ -75,17 +75,15 @@ With the current constraints in mind, we decided to modify our goals to match ou
 
 ## Equipment
 - **Nexys A7-100T FPGA Trainer Board**
-  - The Digilent Nexys A7-100T board has a female VGA connector that can be connected to a VGA monitor via a VGA cable
+  - The [Digilent Nexys A7-100T](https://github.com/byett/dsd/tree/CPE487-Fall2023/Nexys-A7) board has a female [VGA connector](https://en.wikipedia.org/wiki/VGA_connector) that can be connected to a VGA monitor via a VGA cable
   - 2019-11-15 pull request by Peter Ho with the 800x600@60Hz support for 100MHz clock
 
 ![equipment-fpga-layout](/images/fpga_layout-optimized.png)
 
-- **Controller:** 5kΩ potentiometer with a 12-bit analog-to-digital converter (ADC) called Pmod AD1
-  - connected to the top pins of the Pmod port JA (See Section 10 of the Reference Manual(INSERTLINKS))*********
+- **Controller:** 5kΩ [potentiometer](https://en.wikipedia.org/wiki/Potentiometer) with a 12-bit [analog-to-digital](https://en.wikipedia.org/wiki/Analog-to-digital_converter) converter (ADC) called [Pmod AD1](https://digilent.com/shop/pmod-ad1-two-12-bit-a-d-inputs/)
+  - connected to the top pins of the Pmod port JA (See Section 10 of the [Reference Manual](https://digilent.com/reference/_media/reference/programmable-logic/nexys-a7/nexys-a7_rm.pdf))
   
 ![potentiometer](/images/potentiometer.png)
-
-
 
 
 ## Foundation
@@ -128,10 +126,6 @@ With the current constraints in mind, we decided to modify our goals to match ou
 ### 5. Use controller and buttons
 - Press the center button to open Demo 1 (Gradient display), adjust the controller to modify the color hues.
 - Press the top/bottom buttons to open Demo 2 (image), adjust the controller to transform the image along the x and y axis.
-
-## Fix (move lower?)
-- Vertical vs horizontal transformation (NEEDS WORK)**********************
-- why different?
 
 ## Implementation/ Modifications
 ### A) 3-bit -> 8-bit colors
