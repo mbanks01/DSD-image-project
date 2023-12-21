@@ -22,12 +22,12 @@
 The goal of this project was to implement an image loader onto an FPGA with VHDL. This would consist of converting an image into binary data, then reading it into the memory and showing the output via VGA connection to a monitor. We also aimed to create functions to modify the image using transformations such as brightness, thresholding, and more. The modifications would happen once a button is pressed or when using an external controller.
 
 The objectives of this are the following:
-[] Implement an image reading function
-[] Convert image data to video output
-[] Implement color image VGA support
-[] Implement image processing functions
-[] Create working demos
-[] Future Directions/ Conclusion
+- [] Implement an image reading function
+- [] Convert image data to video output
+- [] Implement color image VGA support
+- [] Implement image processing functions
+- [] Create working demos
+- [] Future Directions/ Conclusion
 
 (##Constraints/Challenges)
 ## Constraints/ Challenges
@@ -38,10 +38,10 @@ The objectives of this are the following:
 (##Adjusted-Goal/Objectives)
 ## Adjusted Goal/ Objectives
 With the current constraints in mind, we decided to modify our goals to match our timeframe:
-[] Read "simulated" binary image
-[] Implement 8-bit colors
-[] Implement 8x8 resolution image
-[] Implement image processing functions
+- [] Read "simulated" binary image
+- [] Implement 8-bit colors
+- [] Implement 8x8 resolution image
+- [] Implement image processing functions
 
 ## Important Concepts
 
@@ -209,7 +209,13 @@ Given more time, these are the future directions we would have taken:
 - Transforms are stackable, combinations
 - Hue modification, brightness control, etc.
 
-Overall, this project used our knowledge of FPGAs and VHDL to implement an image output with transformations on input.
+Looking back on our adjusted goals, we were able to accomplish the following:
+- [X] Read "simulated" binary image
+- [X] Implement 8-bit colors
+- [X] Implement 8x8 resolution image
+- [X] Implement image processing functions
+
+Overall, this project used our knowledge of FPGAs and VHDL to implement an image output with transformations on input. We were able to successfully implement are goals, and have documentation for future implementations.
 
 ## Timeline (12/16/2023 - 12/20/2023)
 (12/16/2023) - Development of RGB compatibility
