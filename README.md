@@ -248,6 +248,45 @@ set_property -dict { PACKAGE_PIN P17 IOSTANDARD LVCMOS33 } [get_ports { bt_level
 set_property -dict { PACKAGE_PIN P18 IOSTANDARD LVCMOS33 } [get_ports { bt_y }];
 set_property -dict { PACKAGE_PIN M17 IOSTANDARD LVCMOS33 } [get_ports { bt_other }];
 ```
+Within *ball.vhd*:
+These buttons determined states that affected with function, or demo would play:
+```
+    button : PROCESS
+    BEGIN
+        WAIT UNTIL rising_edge(v_sync);
+        IF swap = '1' THEN -- test for new serve
+            st_pressed <= '0';
+            st_transform_x <= '0';
+	        st_transform_y <= '0';
+	        st_level <= '0';
+	        st_other  <= '0';
+        ELSIF transform_x = '1' THEN 
+            st_pressed <= '1';
+            st_transform_x <= '1';
+	        st_transform_y <= '0';
+	        st_level <= '0';
+	        st_other  <= '0';
+        ELSIF transform_y = '1' THEN 
+            st_pressed <= '1';
+            st_transform_x <= '0';
+	        st_transform_y <= '1';
+	        st_level <= '0';
+	        st_other  <= '0';
+        ELSIF level_mod = '1' THEN 
+            st_pressed <= '1';
+            st_transform_x <= '0';
+	        st_transform_y <= '0';
+	        st_level <= '1';
+	        st_other  <= '0';
+        ELSIF other_mod = '1' THEN 
+            st_pressed <= '1';
+            st_transform_x <= '0';
+	        st_transform_y <= '0';
+	        st_level <= '0';
+	        st_other  <= '1';
+        END IF;
+```
+
 
 ### D) Controller integration for imag processing
 Inputs `ADC_SDATA1`, `ADC_SDATA2`, `ADC_SCLK`, and `ADC_CS` were added for potentiometer controller input:
@@ -256,6 +295,25 @@ set_property -dict { PACKAGE_PIN D18 IOSTANDARD LVCMOS33 } [get_ports { ADC_SDAT
 set_property -dict { PACKAGE_PIN E18 IOSTANDARD LVCMOS33 } [get_ports { ADC_SDATA2 }]; #IO_L21P_T3_DQS_15 Sch=ja[3]
 set_property -dict { PACKAGE_PIN G17 IOSTANDARD LVCMOS33 } [get_ports { ADC_SCLK }]; #IO_L18N_T2_A23_15 Sch=ja[4]
 set_property -dict { PACKAGE_PIN C17 IOSTANDARD LVCMOS33 } [get_ports { ADC_CS }]; #IO_L20N_T3_A19_15 Sch=ja[1]
+```
+Within *ball.vhd*:
+	- Similarly to `pixel_col` and `pixel_row`, the controller input (`bat_x`) was divided to create a 1 to 8 value.
+ 	`ball_z_calc <= CONV_INTEGER(bat_x) / 80;          -- 640 / 80 = 8 sections`
+  	- With the first demo (Gradient), the controller was used to determine the value of green on the screen:
+   	`c_green <= conv_std_logic_vector(ball_z_calc,3);`
+    	- With the second demo (Image), the controller was used to shift the X and Y placement of the image:
+     	`transform <= CONV_INTEGER(bat_x) / 80; -- 640 / 80 = 8 sections`
+```
+	IF (st_transform_x = '1') OR (st_transform_y = '1') THEN
+	transform <= CONV_INTEGER(bat_x) / 80; -- 640 / 80 = 8 sections
+	   IF (st_transform_x = '1') THEN
+	       ball_x_calc <= (CONV_INTEGER(pixel_col) / 100) + transform; -- divides into 8 parts for red/green (Y COORD)
+	       ball_y_calc <= (CONV_INTEGER(pixel_row) / 75); -- 600 pixels / 75 = divides into 8 parts for blue (X COORD)
+	   ELSIF (st_transform_y = '1') THEN
+	   	   ball_x_calc <= (CONV_INTEGER(pixel_col) / 100); -- divides into 8 parts for red/green (Y COORD)
+	       ball_y_calc <= (CONV_INTEGER(pixel_row) / 75) + transform; -- 600 pixels / 75 = divides into 8 parts for blue (X COORD)
+	   END IF;
+	END IF;
 ```
 
 ## Demos
