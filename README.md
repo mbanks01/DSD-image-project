@@ -418,10 +418,12 @@ Overall, this project used our knowledge of FPGAs and VHDL to implement an image
 
 ## Contributions
 - Michael Banks:
-	- Code
- 	- Report
-  	- Graphics, video, pictures, powerpoint
+	- Developed Code
+ 	- Wrote Report
+  	- Developed Graphics, video, pictures, powerpoint
 - Elliot Braverman:
-	- Presented project, demo
+	- Presented powerpoint
+ 	- Presented demo
 - Jared Runaas:
-	- Presented project, demo
+	- Presented powerpoint
+ 	- Presented demo
