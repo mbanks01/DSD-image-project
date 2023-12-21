@@ -1,7 +1,8 @@
 # DSD-487 - Digital System Design Final Project
 ## Image Processing in VHDL
 ### Written by Michael Banks (12/16/2023 - 12/20/2023)
-[Powerpoint](https://docs.google.com/presentation/d/1OSbASa3Qv2N50k17Ph_3it8hPO9rOFFxLh-Y4oScfYI/edit?usp=sharing)
+###[Powerpoint](https://docs.google.com/presentation/d/1OSbASa3Qv2N50k17Ph_3it8hPO9rOFFxLh-Y4oScfYI/edit?usp=sharing)
+
 ![project-image](/images/project_img1.png)
 
 ## Table of Contents:
