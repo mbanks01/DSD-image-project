@@ -3,16 +3,17 @@
 ### Michael Banks (12/20/2023)
 
 ## Table of Contents:
-- [Project Goal](##Project-Goal:)
-- [Constraints/ Challenges](##Constraints/Challenges)
-- [Adjusted Goal/ Objectives](##Adjusted-Goal/Objectives)
-- [Important Concepts](## Important Concepts)
-- [Equipment](## Equipment)
-- [Foundation](## Foundation)
-- [Source Files]()
-- [Instructions]()
-- [Fix (move lower?)]()
-- [Implementation/ Modifications](###[Implementation/ Modifications)
+- Project Goal
+- Constraints/ Challenges
+- Adjusted Goal/ Objectives
+- Important Concepts
+- Equipment
+- Foundation
+- Source Files
+- Instructions
+- Fix (move lower?)
+- Implementation/ Modifications
+- Timeline
 
 (##Project-Goal:)
 ## Project Goal:
@@ -75,7 +76,7 @@ With the current constraints in mind, we decided to modify our goals to match ou
   - We used files for lab 6 to implement controller support for image transformations.
   - Files used were:*adc_if.vhd*
 
-## Source Files
+## Source/Constraint Files
 - [adc_if.vhd](https://github.com/mbanks01/DSD-image-project/blob/main/adc_if.vhd)
 - [ball.vhd](https://github.com/mbanks01/DSD-image-project/blob/main/ball.vhd)
 - [clk_wiz_0.vhd](https://github.com/mbanks01/DSD-image-project/blob/main/clk_wiz_0.vhd)
@@ -133,10 +134,30 @@ This initialized the red (3-bit), green (3-bit), and blue (2-bit) values, as wel
 ### D) Controller integration for imag processing
 
 ## Demos
-- 1: Gradient, interact with color modifciation
-- 2: Image, interact with transformations
+- **1: Gradient:**
+  - This demo plots the red value against the blue values to create a gradient of all possible color combinations.
+  - There are 8 possible color values for red, and 4 possible for blue. This creates an 8x4 pixel gradient which is output to the monitor.
+  - **MODIFICATION:** We used the potentiometer to modify the gradient by adding a green value based on the controller input.
+- **2: Image:**
+  - This demo uses the "simulated" bitstream to load an image onto the monitor.
+  - **MODIFICATION:** We used two buttons to modify the input, adding transformations along the X-axis and Y-axis.
+    - When the top button is pressed (pin M18), it triggers flag `st_transform_x`, which sets the transform to add to the 
+    - When the bottom button is pressed (pin P18), it triggers flag `st_transform_y`, which sets the transform to add to the
+        ```
+        IF (st_transform_x = '1') OR (st_transform_y = '1') THEN
+        	transform <= CONV_INTEGER(bat_x) / 80; -- 640 / 80 = 8 sections
+        	   IF (st_transform_x = '1') THEN
+        	       ball_x_calc <= (CONV_INTEGER(pixel_col) / 100) + transform; -- divides into 8 parts for red/green (Y COORD)
+        	       ball_y_calc <= (CONV_INTEGER(pixel_row) / 75); -- 600 pixels / 75 = divides into 8 parts for blue (X COORD)
+        	   ELSIF (st_transform_y = '1') THEN
+        	   	   ball_x_calc <= (CONV_INTEGER(pixel_col) / 100); -- divides into 8 parts for red/green (Y COORD)
+        	       ball_y_calc <= (CONV_INTEGER(pixel_row) / 75) + transform; -- 600 pixels / 75 = divides into 8 parts for blue (X COORD)
+        	   END IF;
+        	END IF;
+        ```
 
 ## Future Directions/ Conclusion
+Given more time, these are the future directions we would have taken:
 - Integrated file processing, text file reader to save to block RAM
 - Integrate block RAM reader for image
 - 8-bit color -> 16-bit color
@@ -144,10 +165,24 @@ This initialized the red (3-bit), green (3-bit), and blue (2-bit) values, as wel
 - Transforms are stackable, combinations
 - Hue modification, brightness control, etc.
 
+Overall, this project used our knowledge of FPGAs and VHDL to implement an image output with transformations on input.
 
+## Timeline (12/16/2023 - 12/20/2023)
+(12/16/2023) - Development of RGB compatibility
 
+(12/16/2023) - Created functionality to display multiple colors at once.
+             - Converted 3-bit RGB to 8-bit RGB
+             - Created pixel mapping function
+             - Began DEMO 1 (Gradient)
+             
+(12/17/2023) - Created controller functionality
+             - Finalized demos 1 and 2
+             
+(12/18/2023) - Began writing report outline
 
+(12/19/2023) - Continued writing report, created visuals/graphics
 
+(12/20/2023) - Finished report
 
 
 A description of the expected behavior of the project, attachments needed (speaker module, VGA connector, etc.), related images/diagrams, etc.
