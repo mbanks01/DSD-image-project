@@ -369,6 +369,13 @@ Within *ball.vhd*:
         	   END IF;
         	END IF;
 ```
+## Observations
+- In Demo 2, the image is flipped. ![flipped-img](/images/obser-1.PNG)
+	- The order of bits can be reversed to fix this. 
+- Y-transformation doesn’t mirror ![Y-no-mirror-img](/images/obser-2.PNG)
+	- This can be fixed by adding a function to loop bits back to bottom of screen.
+
+
 
 ## Future Directions/ Conclusion
 Given more time, these are the future directions we would have taken:
