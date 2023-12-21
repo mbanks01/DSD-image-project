@@ -49,6 +49,9 @@ With the current constraints in mind, we decided to modify our goals to match ou
   ![3-bit_palette_color_test_chart](/images/RGB_3bits_palette_color_test_chart.png)
   
   <sup>3-bit image, and color palette</sup>
+
+  ![3-bit-code](/images/3-bit-rgb-code.png)
+  
 - However, this gives limited usage of colors, as there are only 8 possible color combinations. Because of this, we decided to use 8-bit color, which gives us 2<sup>8</sup>, which is 256 different color combinations.
 - With 8-bit color, we have 8-bits per pixel. Red is represented by the first 3-bits, Green is the next 3-bits, and Blue is the last 2-bits
   
@@ -56,6 +59,9 @@ With the current constraints in mind, we decided to modify our goals to match ou
   ![8-bit_palette_color_test_chart](/images/MSX2_Screen8_palette_color_test_chart.png)
   
   <sup>8-bit image, and color palette</sup>
+
+  ![8-bit-code](/images/8-bit-rgb-code.png)
+  
 ### Pixel mapping
 - For this project, the images are converted to binary data, with each line respresenting a row of pixels. Since we are using 8-bits, this means that a row of *n* pixels will be represented by 'n pixels * 8 bits'.
 - For example: If we wanted a row of 3 red, blue, green pixels, respectively. Red would be "1110000", Green "00011100", and Blue "00000011". This would give us the stream "11100000001110000000011" for this (3 pixels * 8 bits) 24-bit line.
