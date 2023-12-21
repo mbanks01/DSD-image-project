@@ -192,6 +192,12 @@ The image is read as a bit sequence, with 8 signals, acting as "line breaks" for
 ```
 Each layer is a 64-bit sequence which determines the value of 8 pixels, resulting in an 8x8 image.
 
+We also take the desired 8-bit segment from the 64-bit sequence, which is found by using:
+	`inc_val1 <= (ball_x_calc+1)*8 - 1;`
+This takes the X-coordinate (1 to 8) and multiplies it by 8 to get the desired code. 
+	- For example: if we wanted the 1st code, it would result in (1*8-1 = 7), which gives us (7 DOWNTO 0).
+ 	- If we want the second code, it gives us (15 DOWNTO 8), third is (23 DOWNTO 16), and so on.
+  	- This was done so that if we wanted to add more pixels (64x64), we wouldn't need to change this part of the code, as it is adaptable.
 ```
 if (ball_y_calc >= 0) AND (ball_y_calc < 1) THEN
 	rgbcode <= rgbimg0(inc_val1 DOWNTO inc_val1 - 7);
@@ -215,9 +221,42 @@ if (ball_y_calc >= 0) AND (ball_y_calc < 1) THEN
 	rgbcode <= "11111111";
 	END IF;
 ```
+The resulting 8-bit segment is saved to `rgbcode`, which is the resulting color code used in the designated pixel.
+The `rgbcode` is then separated into red, green, and blue:
+```
+	--** assign RGBCODE 8-bit colors (3 red, 3 green, 2 blue) **
+	c_red <= rgbcode(7 DOWNTO 5) + conv_std_logic_vector(level_r,3);
+	c_green <= rgbcode(4 DOWNTO 2) + conv_std_logic_vector(level_g,3);
+	c_blue <= rgbcode(1 DOWNTO 0) + conv_std_logic_vector(level_b,2);
+```
+After the process, the temporary RGB signals are then sent to *vga_top.vhd* for video output.
+```
+	END PROCESS;
+		red <= c_red;
+		green <= c_green;
+		blue <= c_blue;
+```
 
 ### C) Buttons for image processing
+
+Inputs `btn0`, `bt_x`, and `bt_y` were added from pins N17,M18, and bt_y, respectively.
+Inputs `bt_level` and `bt_other` were added for additional functionality, but weren't used in the final product.
+```
+set_property -dict { PACKAGE_PIN N17 IOSTANDARD LVCMOS33 } [get_ports { btn0 }]; #IO_L9P_T1_DQS_14 Sch=btnc
+set_property -dict { PACKAGE_PIN M18 IOSTANDARD LVCMOS33 } [get_ports { bt_x }];
+set_property -dict { PACKAGE_PIN P17 IOSTANDARD LVCMOS33 } [get_ports { bt_level }];
+set_property -dict { PACKAGE_PIN P18 IOSTANDARD LVCMOS33 } [get_ports { bt_y }];
+set_property -dict { PACKAGE_PIN M17 IOSTANDARD LVCMOS33 } [get_ports { bt_other }];
+```
+
 ### D) Controller integration for imag processing
+Inputs `ADC_SDATA1`, `ADC_SDATA2`, `ADC_SCLK`, and `ADC_CS` were added for potentiometer controller input:
+```
+set_property -dict { PACKAGE_PIN D18 IOSTANDARD LVCMOS33 } [get_ports { ADC_SDATA1 }]; #IO_L21N_T3_DQS_A18_15 Sch=ja[2]
+set_property -dict { PACKAGE_PIN E18 IOSTANDARD LVCMOS33 } [get_ports { ADC_SDATA2 }]; #IO_L21P_T3_DQS_15 Sch=ja[3]
+set_property -dict { PACKAGE_PIN G17 IOSTANDARD LVCMOS33 } [get_ports { ADC_SCLK }]; #IO_L18N_T2_A23_15 Sch=ja[4]
+set_property -dict { PACKAGE_PIN C17 IOSTANDARD LVCMOS33 } [get_ports { ADC_CS }]; #IO_L20N_T3_A19_15 Sch=ja[1]
+```
 
 ## Demos
 - **1: Gradient:**
