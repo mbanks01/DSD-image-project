@@ -415,15 +415,3 @@ Overall, this project used our knowledge of FPGAs and VHDL to implement an image
 (12/18/2023) - Began writing report outline
 (12/19/2023) - Continued writing report, created visuals/graphics
 (12/20/2023) - Finished report
-
-## Contributions
-- Michael Banks:
-	- Developed Code
- 	- Wrote Report
-  	- Developed Graphics, video, pictures, powerpoint
-- Elliot Braverman:
-	- Presented powerpoint
- 	- Presented demo
-- Jared Runaas:
-	- Presented powerpoint
- 	- Presented demo
